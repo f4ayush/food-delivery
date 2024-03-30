@@ -15,7 +15,7 @@ export class ItemController {
     }
 
     async getItemById(req: Request, res: Response): Promise<void> {
-        const id = parseInt(req.params.id);
+        const id = req.params.id;
         try {
             const item = await itemService.getItemById(id);
             if (item) {

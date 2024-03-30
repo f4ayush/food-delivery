@@ -8,7 +8,7 @@ export const PricingFactory = setSeederFactory(Pricing, async(faker: Faker) => {
     const pricing = new Pricing();
     const organizations = await AppDataSource.getRepository(Organization).find();
     const randomOrganization = faker.helpers.arrayElement(organizations);
-    pricing.organizationId = randomOrganization.id;
+    pricing.organization = randomOrganization.id;
     pricing.itemType = faker.helpers.arrayElement(['perishable', 'non-perishable']), 
     pricing.zone = faker.helpers.arrayElement(["east","west","north", "south", "central"]), 
     pricing.baseDistanceInKm = faker.number.int({ min: 5, max: 10 }), 

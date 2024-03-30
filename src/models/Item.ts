@@ -5,7 +5,7 @@ import { Pricing } from './Pricing';
 @Entity()
 export class Item {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: string;
 
     @Column()
     type: string;

@@ -7,12 +7,11 @@ export class ItemService {
     private itemRepository = AppDataSource.getRepository(Item);
 
     async getAllItems(): Promise<Item[]> {
-        return this.itemRepository.find();
+        return this.itemRepository.createQueryBuilder("item").getMany();
     }
 
-    async getItemById(id: number): Promise<Item | undefined> {
-        return this.itemRepository.findOne({where: {id: id}});
+    async getItemById(id: string): Promise<Item | undefined> {
+        return this.itemRepository.createQueryBuilder("item").where("item.id = :id", { id }).getOne();
     }
-
-    // Implement other methods as needed
+    
 }

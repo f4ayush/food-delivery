@@ -5,11 +5,10 @@ export class OrganizationService {
     private organizationRepository = AppDataSource.getRepository(Organization);
 
     async getAllOrganizations(): Promise<Organization[]> {
-        return this.organizationRepository.find();
+        return this.organizationRepository.createQueryBuilder("organization").getMany();
     }
-    async getOrganizationById(id): Promise<Organization> {
-        return this.organizationRepository.findOne({where:{id: id}});
+    async getOrganizationById(id:Number): Promise<Organization> {
+        return this.organizationRepository.createQueryBuilder("organization").where("organization.id = :id", { id }).getOne();
     }
 
-    // Implement other methods as needed
 }

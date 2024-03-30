@@ -5,14 +5,16 @@ const options : DataSourceOptions & SeederOptions = {
   "type": "postgres",
   "host": "localhost",
   "port": 5432,
-  "username": "postgres",
-  "password": "ayush",
+  "username": process.env.DB_USERNAME,
+  "password": process.env.DB_PASSWORD,
   "database": "food_delivery_app",
   "synchronize": true,
   "logging": false,
+  "logger":"simple-console",
   "entities": [
     "src/models/*.ts"
   ],
+
   
   "seeds":["src/seeders/*{.ts,.js}"],
   "factories":["src/seeders/*{.ts,.js}"],

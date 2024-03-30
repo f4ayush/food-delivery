@@ -5,20 +5,7 @@ import { PricingService } from '../services/Pricing.service';
 const pricingService = new PricingService();
 
 export class PricingController {
-    async getPricingForOrganizationAndItem(req: Request, res: Response): Promise<void> {
-        const { organizationId, itemId } = req.params;
-        try {
-            const pricing = await pricingService.getPricingForOrganizationAndItem(organizationId, parseInt(itemId));
-            if (pricing) {
-                res.json(pricing);
-            } else {
-                res.status(404).json({ error: 'Pricing not found' });
-            }
-        } catch (error) {
-            res.status(500).json({ error: 'Internal server error' });
-        }
-    }
-
+   
     async getPricing(req: Request, res: Response): Promise<void> {
         const { organization_id, item_type, zone, total_distance } = req.query;
 
@@ -44,12 +31,14 @@ export class PricingController {
                 parsedTotalDistance
             );
 
-            res.json({ total_price: totalPrice });
+            if(totalPrice < 0){
+                res.status(404).json({ error: 'Pricing not found' });
+            }else{
+                res.json({ total_price: totalPrice/100 });
+            }
         } catch (error) {
             console.error('Error fetching pricing:', error);
             res.status(500).json({ error: 'Internal server error' });
         }
     }
-
-    // Implement other methods as needed
 }

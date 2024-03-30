@@ -5,6 +5,7 @@ import { PricingController } from '../controllers/Pricing';
 const router = express.Router();
 const pricingController = new PricingController();
 
-router.get('/:organizationId/:itemId', pricingController.getPricingForOrganizationAndItem);
+router.get('/getPricing', pricingController.getPricing);
+
 
 export default router;

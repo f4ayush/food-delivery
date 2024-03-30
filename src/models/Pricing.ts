@@ -6,15 +6,12 @@ import { Item } from './Item';
 @Entity()
 export class Pricing {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: string;
 
-    @Column()
-    organizationId: string;
-
-    @ManyToOne(() => Organization, organization => organization.id)
+    @ManyToOne(() => Organization, organization=> organization.pricing)
     organization: string;
 
-    @ManyToOne(() => Item, item => item.type)
+    @Column({name: "itemType", enum:["perishable", "non-perishable"]})
     itemType: string;
 
     @Column()
