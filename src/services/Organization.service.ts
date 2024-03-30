@@ -7,7 +7,7 @@ export class OrganizationService {
     async getAllOrganizations(): Promise<Organization[]> {
         return this.organizationRepository.createQueryBuilder("organization").getMany();
     }
-    async getOrganizationById(id:Number): Promise<Organization> {
+    async getOrganizationById(id:number): Promise<Organization> {
         return this.organizationRepository.createQueryBuilder("organization").where("organization.id = :id", { id }).getOne();
     }
 

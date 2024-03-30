@@ -1,7 +1,6 @@
 // src/models/Pricing.ts
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Organization } from './Organization';
-import { Item } from './Item';
 
 @Entity()
 export class Pricing {
