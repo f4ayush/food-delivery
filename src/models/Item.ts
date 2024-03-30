@@ -1,4 +1,3 @@
-// src/models/Item.ts
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Pricing } from './Pricing';
 
