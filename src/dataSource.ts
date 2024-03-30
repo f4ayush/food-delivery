@@ -3,11 +3,11 @@ import { DataSource, DataSourceOptions } from "typeorm"
 import { SeederOptions } from "typeorm-extension"
 const options : DataSourceOptions & SeederOptions = {
   "type": "postgres",
-  "host": "localhost",
+  "host": process.env.DB_HOST,
   "port": 5432,
   "username": process.env.DB_USERNAME,
   "password": process.env.DB_PASSWORD,
-  "database": "food_delivery_app",
+  "database": "food_delivery_app_su12",
   "synchronize": true,
   "logging": false,
   "logger":"simple-console",
@@ -23,21 +23,3 @@ const options : DataSourceOptions & SeederOptions = {
 }
 export const AppDataSource = new DataSource(options)
   
-
-  /* 
-  
-  "type": "postgres",
-    "host": "localhost",
-    "port": 5432,
-    "username": "postgres",
-    "password": "ayush",
-    "database": "food_delivery_app",
-    "synchronize": true,
-    "logging": false,
-    "entities": [
-      "src/models/*.ts"
-    ],
-    "cli": {
-      "entitiesDir": "src/models"
-    }
-    */
