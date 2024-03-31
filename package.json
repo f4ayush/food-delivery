@@ -8,8 +8,8 @@
     "seed": "ts-node src/seeders/index.ts",
     "lint": "npx eslint **/*.ts",
     "build": "tsc",
-    
-    "dev": "node dist/index.js"
+    "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
