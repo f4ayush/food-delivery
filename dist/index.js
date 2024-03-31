@@ -16,11 +16,9 @@ require("reflect-metadata");
 require("dotenv/config");
 const express_1 = __importDefault(require("express"));
 const dataSource_1 = require("./dataSource");
-const cors_1 = __importDefault(require("cors"));
 const routes_1 = __importDefault(require("./routes"));
 const PORT = process.env.PORT || 3000;
 const app = (0, express_1.default)();
-app.use((0, cors_1.default)());
 app.use("/", routes_1.default);
 app.use("/", (req, res) => {
     res.send("hi");
